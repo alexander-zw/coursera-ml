@@ -90,7 +90,7 @@ initial_centroids = [3 3; 6 2; 8 5];
 
 % Run K-Means algorithm. The 'true' at the end tells our function to plot
 % the progress of K-Means
-[centroids, idx] = runkMeans(X, initial_centroids, max_iters, true);
+[centroids, idx] = runkMeans(X, initial_centroids, max_iters, false);
 fprintf('\nK-Means Done.\n\n');
 
 fprintf('Program paused. Press enter to continue.\n');
@@ -107,7 +107,7 @@ pause;
 fprintf('\nRunning K-Means clustering on pixels from an image.\n\n');
 
 %  Load an image of a bird
-A = double(imread('bird_small.png'));
+A = double(imread('IMG_1972.jpg'));
 
 % If imread does not work for you, you can try instead
 %   load ('bird_small.mat');
@@ -161,12 +161,12 @@ X_recovered = reshape(X_recovered, img_size(1), img_size(2), 3);
 
 % Display the original image
 subplot(1, 2, 1);
-imagesc(A);
+imagesc(A * 255);
 title('Original');
 
 % Display compressed image side by side
 subplot(1, 2, 2);
-imagesc(X_recovered)
+imagesc(X_recovered * 255)
 title(sprintf('Compressed, with %d colors.', K));
 
 
